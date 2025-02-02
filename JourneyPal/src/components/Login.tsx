@@ -18,6 +18,7 @@ const Login = () => {
             localStorage.setItem('refreshToken', response.data.refreshToken)
             setError('')
             navigate('/dashboard')
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setError('Invalid credentials')
         }

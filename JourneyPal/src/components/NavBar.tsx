@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../JourneyPal.css';
 import '../Navbar.css'
 
 const NavBar: React.FC = () => {
+    const navigate = useNavigate();
+
     return (
         <nav className="navbar">
             <h1 className="navbar-logo">JourneyPal</h1>
@@ -32,8 +34,8 @@ const NavBar: React.FC = () => {
         </svg>
       </div>
             <div className="navbar-buttons">
-                <button className="login">Log In</button>
-                <button className="signup">Sign Up</button>
+            <button className="login" onClick={() => navigate('/login')}>Log In</button>
+            <button className="signup" onClick={() => navigate('/register')}>Sign Up</button>
             </div>
             
         </nav>
