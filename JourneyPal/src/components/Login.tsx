@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../service/Interceptor"
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google"
+import { handleGoogleLogin } from "../service/GoogleAuth"
 
 const Login = () => {
     const [username, setUsername] = useState('')
@@ -40,6 +42,13 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleLogin}>Login</button>
+
+            <GoogleOAuthProvider clientId="">
+                <GoogleLogin onSuccess={handleGoogleLogin}
+                onError={() => {
+                    console.error('Google authentication failed. Please try again.')
+                }}/>
+            </GoogleOAuthProvider>
         </div>
     )
 }

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../service/Interceptor";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { handleGoogleRegister } from "../service/GoogleAuth";
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -47,6 +49,13 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleRegister}>Register</button>
+            <GoogleOAuthProvider clientId="">
+                <GoogleLogin 
+                onSuccess={handleGoogleRegister}
+                onError={() => {
+                    console.error('Google authentication failed. Please try again.');
+                }}/>
+            </GoogleOAuthProvider>
         </div>
     );
 };
